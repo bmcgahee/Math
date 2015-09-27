@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Geometry Art</title>
+</head>
+
+<body>
+
+<h1>Title:  <i>Geocentricity</i></h1>
+<h1>Artist: <i>Ben McGahee</i></h1>
+<h1>Medium: <i>HTML & JavaScript On Digital Canvas</i></h1>
+<h1>Date:  <i>9/26/2015</i></h1>
+
+<canvas id="Graphics" width="500" height="500" style="border:5px solid #000000;"></canvas>
+
+<script>
+
+var graph = document.getElementById("Graphics");
+var line1 = graph.getContext("2d");
+line1.moveTo(0,0);
+line1.lineTo(500,500);
+line1.stroke();
+
+var line2 = graph.getContext("2d");
+line2.moveTo(0,500);
+line2.lineTo(500,0);
+line2.stroke();
+
+var line3 = graph.getContext("2d");
+line3.moveTo(250,0);
+line3.lineTo(250,500);
+line3.stroke();
+
+var line4 = graph.getContext("2d");
+line4.moveTo(0,250);
+line4.lineTo(500,250);
+line4.stroke();
+
+var line5 = graph.getContext("2d");
+line5.moveTo(0,250);
+line5.lineTo(250,0);
+line5.stroke();
+
+var line6 = graph.getContext("2d");
+line6.moveTo(250,0);
+line6.lineTo(500,250);
+line6.stroke();
+
+var line7 = graph.getContext("2d");
+line7.moveTo(0,250);
+line7.lineTo(250,500);
+line7.stroke();
+
+var line8 = graph.getContext("2d");
+line8.moveTo(250,500);
+line8.lineTo(500,250);
+line8.stroke();
+
+var circle = graph.getContext("2d");
+circle.beginPath();
+circle.arc(250,250,50,0,2*Math.PI);
+circle.stroke();
+
+var bigCircle = graph.getContext("2d");
+bigCircle.beginPath();
+bigCircle.arc(250,250,100,0,2*Math.PI);
+bigCircle.stroke();
+
+var circle2 = graph.getContext("2d");
+circle.beginPath();
+circle.arc(125,125,25,0,2*Math.PI);
+circle.stroke();
+
+var bigCircle2 = graph.getContext("2d");
+bigCircle.beginPath();
+bigCircle.arc(125,125,50,0,2*Math.PI);
+circle.stroke();
+
+var circle3 = graph.getContext("2d");
+circle.beginPath();
+circle.arc(375,125,25,0,2*Math.PI);
+circle.stroke();
+
+var bigCircle3 = graph.getContext("2d");
+bigCircle3.beginPath();
+bigCircle3.arc(375,125,50,0,2*Math.PI);
+bigCircle3.stroke();
+
+var circle4 = graph.getContext("2d");
+circle4.beginPath();
+circle4.arc(125,375,25,0,2*Math.PI);
+circle4.stroke();
+
+var bigCircle4 = graph.getContext("2d");
+bigCircle4.beginPath();
+bigCircle4.arc(125,375,50,0,2*Math.PI);
+bigCircle4.stroke();
+
+var circle5 = graph.getContext("2d");
+circle5.beginPath();
+circle5.arc(375,375,25,0,2*Math.PI);
+circle5.stroke();
+
+var bigCircle5 = graph.getContext("2d");
+bigCircle5.beginPath();
+bigCircle5.arc(375,375,50,0,2*Math.PI);
+bigCircle5.stroke();
+
+</script>
+
+</body>
+
+</html>
