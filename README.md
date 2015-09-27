@@ -1,2 +1,2 @@
 # Math
-Contains math programs
+This repository contains math programs.
