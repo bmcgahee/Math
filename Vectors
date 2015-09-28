@@ -1,0 +1,65 @@
+#Author: Ben McGahee
+#Title: Vectors
+#Date: 9/27/2015
+#Purpose: This program asks the user to enter the components of two vectors A and B.
+#The program calculates the magnitude of each vector, their dot product, determines whether the vectors are orthogonal or not,
+#and finds the angle between them.
+
+#Import math and time modules.
+import math
+import time
+
+#Ask user to enter x and y components for vector A.
+Ax = int(raw_input("Enter x component for vector A: "))
+Ay = int(raw_input("Enter y component for vector A: "))
+
+#Ask the user to enter x and y components for vector B.
+Bx = int(raw_input("Enter x component for vector B: "))
+By = int(raw_input("Enter y component for vector B: "))
+
+#Store the x and y components for vectors A and B.
+vA = [Ax, Ay]
+vB = [Bx, By]
+
+#Calculate the magnitude (length) of vectors A and B.
+magA = math.sqrt(Ax*Ax + Ay*Ay)
+magB = math.sqrt(Bx*Bx + By*By)
+
+#Round their magnitudes to two decimal places.
+magARound = round(magA, 2)
+magBRound = round(magB, 2)
+
+#Calculate the dot product of vectors A and B.
+dotAB = Ax*Bx + Ay*By
+
+#Calculate the angle between vectors A and B and convert angle to degrees, rounding to the nearest degree.
+cosAngle = dotAB / (magA*magB)
+invCos = math.acos(cosAngle)
+invCosDeg = invCos * 180.0 / math.pi
+angle = round(invCosDeg, 2)
+
+print ""
+
+#Display all of the information about the two vectors that includes vectors in component form, magnitudes, dot product, and the angle between them.
+print "Here is the information about the two vectors."
+print ""
+time.sleep(3)
+print "vector A: "
+print vA
+print "vector B: "
+print vB
+print "The magnitude of vector A: " + str(magARound) + " units"
+print "The magnitude of vector B: " + str(magBRound) + " units"
+
+#If dot product is 0, then the vectors are orthogonal.  Otherwise they are not orthogonal.
+if dotAB == 0:
+    print "The dot product is: " + str(dotAB) + " The vectors are orthogonal."
+else:
+    print "The dot product is: " + str(dotAB) + " The vectors are not orthogonal."
+
+print "The angle between vector A and vector B is: " + str(angle) + " degrees."
+
+
+
+
+
