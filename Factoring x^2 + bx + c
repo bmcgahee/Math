@@ -1,0 +1,22 @@
+#Author: Ben McGahee
+#Title: Factoring x^2 + bx + c
+#Date: 9/30/2015
+#Purpose: The canBeFactored() function determines if the trinomial x^2 + bx + c can be factored.
+#Choose b for the coefficient of x, c for the constant term, and p and q are the factors of c.
+#For example, to find if x^2 - 4x + 3 can be factored, use canBeFactored(-4, 3, 1, 3), canBeFactored(-4, 3, -1, -3), etc.
+
+#Define canBeFactored() function.
+def canBeFactored(b, c, p, q):
+    product = p*q
+    add = p + q
+    #The case when factors of c whose product is not b.
+    if product != c:
+        print "Enter factors p and q whose product is " + str(c) + "."
+    #The case when factors of c add up to b makes the trinomial factorable.  
+    if product == c and add == b:
+        return True
+    #The case when factors of c do not add to b, which makes the trinomial not factorable.
+    elif product == c and add != b:
+        return False
+    else:
+        return
