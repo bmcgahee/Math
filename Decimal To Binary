@@ -1,0 +1,32 @@
+#Author: Ben McGahee
+#Title: Decimal To Binary
+#Date: 9/30/2015
+#Purpose: This program converts a zero or positive decimal number to a binary number.  
+
+#Ask the user to input a decimal number.
+decimal = int(raw_input("Enter the decimal number you want to convert to binary: "))
+#While loop executes if the decimal number is negative.
+while decimal < 0:
+    decimal = int(raw_input("Enter the decimal number you want to convert to binary: "))
+#The zero case.
+if decimal == 0:
+    #Prints the decimal and binary numbers, which are both 0.
+    print "Decimal: 0"
+    print "Binary: 0"
+#Here's the non-zero case.
+else:
+    #Declare empty binary string and new variable Decimal.
+    binary = ""
+    Decimal = decimal
+    #While loop executes when decimal is non-zero.
+    while Decimal != 0:
+        #binary stores the remainder after division.
+        binary = str(Decimal % 2) + binary
+        #Decimal stores the quotient that will be used to get the next remainder on next iteration.
+        Decimal = Decimal / 2
+    #Converts the binary string into an integer.
+    intBinary = int(binary)
+    #Prints the decimal and binary numbers.
+    print "Decimal: " + str(decimal)
+    print "Binary: " + str(intBinary)
+    
