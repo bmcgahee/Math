@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace BMI
+{
+    public class Program
+    {
+        public void Main(string[] args)
+        {
+            string height;
+            string weight;
+            double BMI;
+
+            Console.Write("Enter your height in inches: ");
+            height = Console.ReadLine();
+            double Height = double.Parse(height);
+
+            Console.Write("Enter your weight in pounds: ");
+            weight = Console.ReadLine();
+            double Weight = double.Parse(weight);
+
+            BMI = (703 * Weight) / (Height * Height);
+
+            Console.WriteLine("Your Body Mass Index is: " + Math.Round(BMI, 2));
+
+            if (BMI < 18.5)
+                Console.WriteLine("You are underweight.");
+            else if (BMI >= 18.5 && BMI <= 24.9)
+                Console.WriteLine("You have a normal weight.");
+            else if (BMI >= 25 && BMI <= 29.9)
+                Console.WriteLine("You are overweight.");
+            else
+                Console.WriteLine("You are obese.");
+
+            Console.Read();
+
+        }
+    }
+}
