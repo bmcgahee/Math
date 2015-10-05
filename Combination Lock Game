@@ -1,0 +1,78 @@
+'Author: Ben McGahee
+'Title: The Combination Lock Game
+'Date: 10/4/2015
+'Purpose:  This game lets you guess the correct 4 number combination.  
+'At the end of the game, the computer tells you the correct combination and how many guesses it took to find it.
+
+'Introduction to the game
+PRINT "Welcome to The Combination Lock Game!"
+PRINT "There are four numbers you have to guess correctly in the right order."
+PRINT "Each of the four numbers in the combination are between 1 and 5."
+PRINT "Let's begin."
+
+'Activate the random number generator.
+RANDOMIZE TIMER
+
+'Sets the 4 random number variable for the combination lock.
+firstNumber = INT(RND * 5) + 1
+secondNumber = INT(RND * 5) + 1
+thirdNumber = INT(RND * 5) + 1
+fourthNumber = INT(RND * 5) + 1
+
+'Initialize the guess variable.
+guess = 0
+
+'DO Loop executes during the game until all 4 numbers have been guessed correctly in the right order.
+DO
+    'Initialize the correct variable.
+    correct = 0
+
+    'Ask the player to guess the 4 numbers.
+    INPUT "Guess the first number: ", number1
+    INPUT "Guess the second number: ", number2
+    INPUT "Guess the third number: ", number3
+    INPUT "Guess the fourth number: ", number4
+
+    'If first number is correct then computer lets the player know and adds 1 to correct numbers.
+    IF number1 = firstNumber THEN
+        PRINT "First number is correct!"
+        correct = correct + 1
+    'If first number is incorrect then computer tells the player if the number is high or low. 
+    ELSE
+        IF number1 > firstNumber THEN PRINT "First number is high."
+        IF number1 < firstNumber THEN PRINT "First number is low."
+    END IF
+
+    'The same logic from above applies to the other 3 numbers.
+
+    IF number2 = secondNumber THEN
+        PRINT "Second number is correct!"
+        correct = correct + 1
+    ELSE
+        IF number2 > secondNumber THEN PRINT "Second number is high."
+        IF number2 < secondNumber THEN PRINT "Second number is low."
+    END IF
+
+    IF number3 = thirdNumber THEN
+        PRINT "Third number is correct!"
+        correct = correct + 1
+    ELSE
+        IF number3 > thirdNumber THEN PRINT "Third number is high."
+        IF number3 < thirdNumber THEN PRINT "Third number is low."
+    END IF
+
+    IF number4 = fourthNumber THEN
+        PRINT "Fourth number is correct!"
+        correct = correct + 1
+    ELSE
+        IF number4 > fourthNumber THEN PRINT "Fourth number is high."
+        IF number4 < fourthNumber THEN PRINT "Fourth number is low."
+    END IF
+    'Add 1 to total number of guesses after player guesses all 4 numbers.
+    guess = guess + 1
+LOOP UNTIL correct = 4
+
+'Tells the player that he or she guessed the correct combination, what the correct combination is, and how many guesses it took to find it.
+PRINT "Congratulations!  You guessed the correct combination."
+PRINT firstNumber, secondNumber, thirdNumber, fourthNumber
+PRINT "It took you "; guess; " guesses to figure out the correct combination."
