@@ -1,0 +1,9 @@
+from fractions import gcd
+def leastComMult(number1, number2):
+    lcm = (number1 * number2) / gcd(number1, number2)
+    return lcm
+
+#TEST DATA
+
+leastComMult(5, 8)
+leastComMult(24, 33)
