@@ -1,0 +1,30 @@
+#Author: Ben McGahee
+#Title: Days Between Dates
+#Date: 10/6/2015
+#Purpose:  This program lets the user input a starting month, day, and year and an ending month, day, and year
+and then calculates the number of days between the two dates.
+
+#Import datetime module.
+import datetime
+
+#Ask user to input start date that includes month, day, and year.
+startMonth = int(raw_input("Enter month in MM format for starting month: "))
+startDay = int(raw_input("Enter day in DD format for starting day: "))
+startYear = int(raw_input("Enter year in YYYY format for starting year: "))
+
+#Ask user to input end date that incudes month, day, and year.
+endMonth = int(raw_input("Enter month in MM format for ending month: "))
+endDay = int(raw_input("Enter day in DD format for ending day: "))
+endYear = int(raw_input("Enter year in YYYY format for ending year: "))
+
+#Sets up the first and second days as datetime objects.
+day1 = datetime.datetime(startYear, startMonth, startDay)
+day2 = datetime.datetime(endYear, endMonth, endDay)
+
+#Finds the difference between the two dates in days.
+diff = abs(day1 - day2)
+dayDiff = diff.days
+
+#Displays the number of days between the two dates.  
+print str(dayDiff) + " days"
+
