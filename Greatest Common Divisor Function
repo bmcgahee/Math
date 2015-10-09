@@ -1,0 +1,11 @@
+from fractions import gcd
+def greatComDiv(number1, number2):
+    div = gcd(number1, number2)
+    return "The greatest common divisor of " + str(number1) + " and " + str(number2) + " is: " + str(div)
+
+#TEST DATA:
+
+greatComDiv(5, 12)
+greatComDiv(18, 27)
+
+    
