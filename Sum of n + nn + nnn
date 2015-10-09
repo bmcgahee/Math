@@ -1,0 +1,11 @@
+#Author: Ben McGahee
+#Title: Sum of n + nn + nnn
+#Date: 10/6/2015
+#Purpose:  This program takes a number n, and calculates the sum of n + nn + nnn.
+For example, the user inputs the number 6.  The program calculates the sum of 6 + 66 + 666 = 738.
+
+n = int(raw_input("Enter a positive integer: "))
+nn = 10*n + n
+nnn = 100*n + nn
+add = n + nn + nnn
+print "The sum of n + nn + nnn is: " + str(add)
