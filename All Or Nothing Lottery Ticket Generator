@@ -1,0 +1,35 @@
+#Author: Ben McGahee
+#Title: All Or Nothing Lottery Ticket Generator
+#Date: 10/10/2016
+#Purpose:  This program lets you choose how many All or Nothing Tickets.  The program generates a set of 12 unique numbers from 1-24 for each ticket.
+
+#Import random and time modules
+import random, time
+
+#Initialize empty lottery ticket list
+allOrNothing = []
+
+#Introduction to the rules of All Or Nothing
+print "All Or Nothing is a game where you pick 12 numbers from numbers 1-24.  If you match all or none of the winning numbers then you win!"
+
+#5 second delay
+time.sleep(5)
+
+#Asks the player how many tickets he or she wants to purchase.
+tickets = int(raw_input("How many tickets do you want to purchase? "))
+
+#Confirms the number of tickets to purchase.
+print "You want " + str(tickets) + " tickets.  We can do that.  Coming right up!"
+
+#For Loop takes a random sample of 12 numbers from 1-24, sorts them, and appends those numbers to the lottery ticket list.
+for i in range(tickets):
+    allOrNothing.append(sorted(random.sample(range(1, 25), 12)))
+
+#5 second delay
+time.sleep(5)
+
+#Prints out the player's list of lottery numbers and wishes him or her good luck!
+print "Here are your numbers.  Good luck!"
+print allOrNothing
+    
+    
