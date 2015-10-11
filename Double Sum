@@ -1,0 +1,24 @@
+#Author: Ben McGahee
+#Title: Double Sum
+#Date: 10/11/2016
+#Purpose:  This program computes a double summation by finding the inner sum first and then using that sum to find the outer sum, which gets the final sum.  
+
+#Asks the user to enter an upper limit for both the outer and inner sums.
+iLimit = int(raw_input("Enter an upper limit for outer sum: "))
+jLimit = int(raw_input("Enter an upper limit for inner sum: "))
+
+#Intialize sumj variable.
+sumj = 0
+
+#Nested For Loop calculates the double sum.  
+for i in range(1, iLimit + 1):
+    #Inner For Loop calculate the inner sum first.
+    #Outer For Loop calculates the outer sum, which is the sum of the inner sum.
+    for j in range(1, jLimit + 1):
+        #Adds up the formula i*j inside the inner For Loop.  The formula i*j can be replaced with another formula in terms of i and j
+        , say 2*i + j for example.  
+        sumj = sumj + i*j        
+#Prints the double sum.  
+print "Double Sum = " + str(sumj)
+
+        
