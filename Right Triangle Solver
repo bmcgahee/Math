@@ -1,0 +1,39 @@
+#Author: Ben McGahee
+#Date: 10/12/2015
+#Title: Right Triangle Solver
+#Purpose: This program lets you find the missing side of a right triangle given two known sides.
+
+#Import math module.
+import math
+
+#Instructs the user on how to use the program.  Make sure to enter a 0 if the side is unknown.
+print "Enter the length for each side of the right triangle.  Enter a 0 if the side is unknown."
+
+#Asks the user what the lengths are for the first side, second side, and hypotenuse.
+side1 = float(raw_input("What is the length of the first side? "))
+side2 = float(raw_input("What is the length of the second side? "))
+hypotenuse = float(raw_input("What is the length of the hypotenuse? "))
+
+#While Loop executes if the length of the hypotenuse is less than the length of the first or second sides.
+while hypotenuse < side1 or hypotenuse < side2:
+    print "The length of the hypotenuse cannot be less than the first side or second side."
+    hypotenuse = float(raw_input("What is the length of the hypotenuse? "))
+
+#Finds the length of the hypotenuse given the length of the first and second sides.
+if side1 != 0 and side2 != 0 and hypotenuse == 0:
+    hypotenuse = math.sqrt(side1 * side1 + side2 * side2)
+    print "The hypotenuse has a length of: " + str(hypotenuse) + " units"
+
+#Finds the length of the first side given the length of the hypotenuse and second side.
+if side2 != 0 and hypotenuse != 0 and side1 == 0:
+    side1 = math.sqrt(hypotenuse * hypotenuse - side2 * side2)
+    print "The first side has a length of: " + str(side1) + " units"
+
+#Finds the length of the second side given the length of the hypotenuse and first side.
+if side1 != 0 and hypotenuse != 0 and side2 == 0:
+    side2 = math.sqrt(hypotenuse * hypotenuse - side1 * side1)
+    print "The second side has a length of: " + str(side2) + " units"
+
+
+
+
