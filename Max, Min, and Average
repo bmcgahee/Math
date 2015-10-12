@@ -1,0 +1,52 @@
+#Author: Ben McGahee
+#Title: Max, Min, and Average
+#Date: 10/12/2015
+#Purpose: This program lets you enter in numbers into a data set and finds the maximum, minimum, and avaerage values of the data set.
+
+#Asks the user how many numbers you want in the data set.
+size = float(raw_input("How many numbers do you want in your data set? "))
+
+#Initialize the count variable and numbers list.
+count = 1
+numbers = []
+
+#While loop adds the numbers to the list.
+while count <= size:
+    number = int(raw_input("Enter number: "))
+    numbers.append(number)
+    count += 1
+
+#Set the first number in the list as the temporary maximum value.    
+maxNumber = numbers[0]
+
+#For Loop finds the maximum value in the data set.
+for i in range(0, len(numbers)):
+    if numbers[i] > maxNumber:
+        maxNumber = numbers[i]
+print "The maximum value is: " + str(maxNumber)
+
+#Set the first number in the list as the temporary minimum value.
+minNumber = numbers[0]
+
+#For Loop finds the minimum value in the data set.
+for j in range(0, len(numbers)):
+    if numbers[j] < minNumber:
+        minNumber = numbers[j]
+print "The minimum value is: " + str(minNumber)
+
+#Initialize the add variable.
+add = 0
+
+#For Loop finds the sum of all the numbers in the list.
+for k in range(0, len(numbers)):
+    add += numbers[k]
+
+#Calculates the average of all the numbers in the data set.
+average = add / size
+
+#Rounds the average to two decimal places.
+roundAverage = round(average, 2)
+
+print "The average is: " + str(roundAverage)
+
+
