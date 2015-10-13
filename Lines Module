@@ -1,0 +1,51 @@
+#Author: Ben McGahee
+#Title:  Lines
+#Date: 10/13/2015
+#Purpose: The Lines module provides four functions that help you calculate the distance between two points, the midpoint between two points
+#the slope of a line given two points, and the equation of a line in slope-intercept form.
+
+#Import math funcion.
+import math
+
+#distance function finds the distance between two points (x1, y1) and (x2, y2).
+def distance(x1, y1, x2, y2):
+    xSquared = (x1 - x2) * (x1 - x2)
+    ySquared = (y1 - y2) * (y1 - y2)
+    sumSquared = xSquared + ySquared
+    distance = math.sqrt(sumSquared)
+    answer = "The distance between " + "(" + str(x1) + "," + str(y1) + ")" + " and " + "(" + str(x2) + "," + str(y2) + ")" + " is: " + str(distance)
+    return answer
+
+#midpoint function finds the midpoint between two points (x1, y1) and (x2, y2).
+def midpoint(x1, y1, x2, y2):
+    xAverage = (x1 + x2) / 2.0
+    yAverage = (y1 + y2) / 2.0
+    answer = "The midpoint between " + "(" + str(x1) + "," + str(y1) + ")" + " and " + "(" + str(x2) + "," + str(y2) + ")" + " is: " + "(" + str(xAverage) + "," + str(yAverage) + ")"
+    return answer
+
+#slope function finds the slope of a line given two points (x1, y1) and (x2, y2).
+def slope(x1, y1, x2, y2):
+    xDiff = x2 - x1
+    yDiff = y2 - y1
+    if yDiff == 0 and xDiff != 0:
+        return "Slope is: 0"
+    elif xDiff == 0:
+        return "Slope is: undefined"
+    elif yDiff == 0 and xDiff == 0:
+        return "Slope is: undefined"
+    else:
+        slope = yDiff / xDiff
+        return "Slope is: " + str(slope)
+
+#slopeInt function finds the equation of a line in slope-intercept form.
+def slopeInt(slope, x1, y1):
+    yInt = y1 - slope * x1
+    if slope == 0:
+        answer = "The slope-intercept form equation of the line is: " + "y = " + str(y1)
+        return answer
+    elif slope == "undefined":
+        answer = "The equation of the line is: " + "x = " + str(x1)
+    else:
+        answer = "The slope-intercept form equation of the line is: " + "y = " + str(slope) + "x" + " + " + str(yInt)
+        return answer
+
