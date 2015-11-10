@@ -1,0 +1,46 @@
+public class Ant { //class Ant
+    
+    //declare String variable name and float variables speed, current, and finish for the ant
+    public String name;
+    public float speed;
+    public float current;
+    public float finish;
+    
+    //Ant constructor that contains the above variables as its input parameters
+    Ant (String name, float speed, float current, float finish){
+        
+        this.name = name;
+        this.speed = speed;
+        this.current = current;
+        this.finish = finish;  
+    }
+}
+
+public class Program {
+    
+    //main program
+    public static void main(String[] args){
+        Ant ant = new Ant("Adam", 2, 0, 50); //ant constructor whose name is Adam, speed is 2 ft/day, start position is 0 ft and finish position is 50 ft.
+        int day = 1; //begin number of days with day variable set to 1.
+        
+        System.out.println("Let's find out how many days it will take " + ant.name + " the ant to crawl up at least " + ant.finish + " feet.");
+        
+        while(ant.current < ant.finish){ //while loop executes only if the ant's current position is less than the finish position.
+            if(day % 2 != 0){ //if it is an odd day then Adam's position will increase by 2 ft.
+                System.out.println("Day: " + day);
+                ant.current += ant.speed;
+                System.out.println("The current position of " + ant.name + " is: " + ant.current);
+            }
+            else { //otherwise, Adam's position will decrease by 1 ft on an even day.
+                System.out.println("Day: " + day);
+                ant.current -= ant.speed / 2;
+                System.out.println("The current position of " + ant.name + " is: " + ant.current);
+            }
+            day++; //increment the day by 1
+        }
+        if(ant.current >= ant.finish){ //subtract one from day since the while loop increments one more time after it reaches 50 or more ft.
+            day--;
+        }
+        System.out.println("It took " + day + " days for " + ant.name + " the ant to crawl up at least " + ant.finish + " feet!");
+    }
+}
