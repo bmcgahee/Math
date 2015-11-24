@@ -1,0 +1,28 @@
+#Author: Ben McGahee
+#Date:  11/23/2015
+#Title: Compound Interest Calculator
+#Purpose: This program lets you calculate how much money you will receive provided the principal, rate of return, and
+#the number of years you invest.
+
+
+#Input the principal, rate of return, and number of years for investment.
+principal = int(raw_input("Enter amount you want to invest: "))
+rate = float(raw_input("Enter annual rate of return on investment: "))
+time = int(raw_input("Enter number of years you want to invest: "))
+
+#Initialize year at 1.
+year = 1
+
+#While loop executes to calculate the amount received on the investment each year.
+while year <= time:
+    #compound interest formula
+    amount = principal * (1 + rate / 100.0)**year
+    #rounds the amount to two decimal places
+    roundAmount = round(amount, 2)
+    if year == 1:
+        print "You earned $" + str(roundAmount) + " after " + str(year) + " year."
+    else:
+        print "You earned $" + str(roundAmount) + " after " + str(year) + " years."
+    year += 1
+
+    
