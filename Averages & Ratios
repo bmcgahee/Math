@@ -1,0 +1,70 @@
+#Author: Ben McGahee
+#Title: Averages & Ratios
+#Date: 12/20/2015
+#Purpose:  This program allows you to calculate the average of two numbers (the left and right endpoints).
+#The left averages start with the average of the left endpoint and first average and continues with the average of the left endpoint and that average
+#and so on.
+#The right averages start with the average of the average of the left and right endpoints and the right endpoint and continues with the average of the
+#right endpoint and that average and so on.
+#For example:  Consider the interval [0, 2].  Then the average of 0 and 2 is 1.  The left average begins with the average of 0 and 1, which is 0.5.
+#The next left average is the average of 0 and 0.5, which is 0.25.  The next left average is the average of 0 and 0.25, which is 0.125 and so on.
+#The right average begins with average of 0 and 2, which is 1.  Then the next right average is the average of 1 and 2, which is 1.5.
+#Then the next right average is 1.75 and so on.
+#The program also calculates the ratios of consecutive terms in both the left and right averages lists.
+
+
+#Ask the user to input the left and right endpoints.
+a = float(raw_input("Enter a left endpoint: "))
+b = float(raw_input("Enter a right endpoint: "))
+
+#While Loop executes when value of a is greater than or equal to b.
+while a >= b:
+    a = float(raw_input("Enter a left endpoint: "))
+    b = float(raw_input("Enter a right endpoint: "))
+
+#Ask the user for the number of iterations.
+i = int(raw_input("How many iterations? "))
+
+#Declare the empty left and right averages list to store values in the For Loop
+leftAvgList = []
+rightAvgList = []
+
+leftRatios = []
+rightRatios = []
+
+#For Loop executes i number of iterations, calculating the left and right averages,
+#and storing them in their appropriate lists.
+for n in range(1, i + 1):
+    leftAvg = ((2**n - 1)*a + b) / 2**n
+    rightAvg = (a + (2**n - 1)*b) / 2**n
+    leftAvgList.append(leftAvg)
+    rightAvgList.append(rightAvg)
+
+#For Loop executes up to 1 less than the length of the left average list number of iterations,
+#and calculates the ratios of the n-term and n+1-term in the left and right average lists and stores them
+#in the left and right ratio lists.
+for n in range(0, len(leftAvgList) - 1):
+    rLeft = leftAvgList[n] / leftAvgList[n + 1]
+    rRight = rightAvgList[n] / rightAvgList[n + 1]
+    leftRatios.append(rLeft)
+    rightRatios.append(rRight)
+    
+
+#Prints out the list of left averages.
+print "Here are the left averages: "
+print leftAvgList
+
+#Prints out the list of right averages.
+print "Here are the right averages: "
+print rightAvgList
+
+#Prints out the list of left ratios.
+print "Here are the left ratios: "
+print leftRatios
+
+#Prints out the list of right ratios. 
+print "Here are the right ratios: "
+print rightRatios
+
+    
+    
