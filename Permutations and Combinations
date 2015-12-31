@@ -1,0 +1,108 @@
+#Author: Ben McGahee
+#Title:  Permutations and Combinations
+#Date:  12/30/2015
+#Purpose: This program asks the user if he/she wants to calculate a permutation (number of ways to arrange r objects out of n objects total)
+#or a combination (number of ways to choose r objects out of n objects total).  All the user has to do is tell the program how many total objects exist,
+#and how many objects to either arrange or choose from the total.  Then the program calculates the permutation or combination.  
+
+#factorial function: n! = n(n - 1)(n - 2)*...*1
+def factorial(n):
+    if n == 0:
+        return 1
+    elif n < 0:
+        print "The value of n must be greater than or equal to 0."
+    else:
+        nFact = n * factorial(n - 1)
+        return nFact
+
+#combination function: c(n, r) = n! / r!(n - r)!
+def combination(n, r):
+    if n == 0 and r == 0:
+        return 1
+    if n != 0 and r == 0:
+        return 1
+    elif n < r:
+        print "The value of n must be greater than or equal to r."
+    elif n <= 0 or r <= 0:
+        print "The values of n and r must be positive integers."
+    else:
+        nFact = n * factorial(n - 1)
+        rFact = r * factorial(r - 1)
+        nrFact = (n - r) * factorial(n - r - 1)
+        return nFact / (rFact * nrFact)
+
+#permutation function: p(n , r) = n! / (n - r)!
+def permutation(n , r):
+    if n == 0 and r == 0:
+        return 1
+    elif n != 0 and r == 0:
+        return 1
+    elif n != 0 and r != 0 and n == r:
+        return n * factorial(n - 1)
+    elif n < r:
+        print "The value of n must be greater than or equal to r."
+    elif n <= 0 or r <= 0:
+        print "The values of n and r must be positive integers."
+    else:
+        nFact = n * factorial(n - 1)
+        nrFact = (n - r) * factorial(n - r - 1)
+        return nFact / nrFact
+
+#Ask the user to enter C to calculate combination or P to calculate permutation.
+print "Enter C for combination or P for permutation."
+calculation = raw_input("What type of calculation do you want to do? ")
+
+#Combination Case:
+if calculation.upper() == "C":
+    #Ask user to input total number of objects.
+    total = int(raw_input("Enter the total number of items: "))
+    #While Loop executes if total number of objects is 0 or negative.
+    while total <= 0:
+        print "You need to enter a positive integer for the total number of items."
+        total = int(raw_input("Enter the total number of items: "))
+    #Ask user to input number of objects to choose out of the total.
+    choose = int(raw_input("Enter the number of items you want to choose: "))
+    #While Loop executes if number of objects chosen is negative.
+    while choose < 0:
+        print "You need to enter a positive integer for the number of items you want to choose."
+        choose = int(raw_input("Enter the number of items you want to choose: "))
+    #While Loop executes if number of chosen objects is greater than the total number of objects.
+    while choose > total:
+        print "You cannot choose that many items."
+        choose = int(raw_input("Enter the number of items you want to choose: "))
+    #combo variable stores the calculation and is used for the print statement on the next line.
+    combo = combination(total, choose)
+    print "There are " + str(combo) + " ways to choose " + str(choose) + " items out of " + str(total) + " items."
+
+#Permutation Case:
+elif calculation.upper() == "P":
+    #Ask user to enter total number of objects.
+    total = int(raw_input("Enter the total number of items: "))
+    #While loop executes if total number of objects is negative.
+    while total <= 0:
+        print "You need to enter a positive integer for the total number of items."
+        total = int(raw_input("Enter the total number of items: "))
+    #Ask user to input the number of objects to be arranged out of the total.
+    arrange = int(raw_input("Enter the number of items you want to arrange: "))
+    #While Loop executes if the number of objects arranged is negative.
+    while arrange < 0:
+        print "You need to enter a positive integer for the number of items you want to arrange."
+        choose = int(raw_input("Enter the number of items you want to choose: "))
+    #While Loop executes if the number of arranged objects is greater than the total number of objects.
+    while arrange > total:
+        print "You cannot choose that many items."
+        choose = int(raw_input("Enter the number of items you want to choose: "))
+    #permutate variable stores the calculation and is used for the print statement on the next line.
+    permute = permutation(total, arrange)
+    print "There are " + str(permute) + " ways to arrange " + str(arrange) + " items out of " + str(total) + " items."
+
+#Otherwise Case: Program tells user he/she entered an invalid entry and needs to try again.  
+else:
+    print "You entered an invalid entry.  Please try again."
+        
+        
+
+    
+    
+        
+        
