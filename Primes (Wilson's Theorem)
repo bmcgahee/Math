@@ -1,0 +1,66 @@
+#Author: Ben McGahee
+#Title: Primes (Wilson's Theorem)
+#Date: 2/11/2016
+#Purpose:  This program applies Wilson's Theorem in number theory to determine which numbers between 2 and n are prime,
+#where n is the number of positive integers greater than or equal to 2.  The program displays all of these numbers and
+#tells the user which numbers are prime.
+
+#Import the time module.
+import time
+
+#Define the factorial recursive function.
+#Note that n! = n(n - 1)(n - 2)***3*2*1
+def fact(n):
+    if n == 1:
+        return 1
+    else:
+        return n * fact(n - 1)
+
+#Define the prime function.
+#If p divides the Wilson expression (p - 1)! + 1, then p is a prime number.
+#Otherwise, p is not a prime number.
+def prime(p):
+    wilson = fact(p - 1) + 1
+    if wilson % p == 0:
+        return True
+    else:
+        return False
+
+#Let user enter how many positive integers greater than or equal to 2 he/she wants to search.
+n = int(raw_input("How many positive integers greater than or equal to 2 you want to search? "))
+
+while n <= 0:
+    print "Please enter a positive integer."
+    n = int(raw_input("How many positive integers greater than or equal to 2 you want to search? "))
+
+
+#search is the last number the program will search up to, but excluding that number.
+search = n + 2
+#final includes the last number.
+final = search - 1
+
+#Begin count at 0.
+count = 0
+
+#For loop executes and sees if number i divides the Wilson expression (i - 1)! + 1.
+#If i divides (i - 1)! + 1, then increase the count by 1.
+for i in range(2, search):
+    factor = fact(i - 1) + 1
+    if factor % i == 0:
+        count += 1
+
+#3 second delay
+time.sleep(3)
+#Print how many prime numbers there are between 2 and the final number that is searched.
+print "There are " + str(count) + " prime numbers between 2 and " + str(final) + "."
+
+#Similar to previous for loop except it tells which number is prime.  
+for i in range(2, search):
+    wilson = fact(i - 1) + 1
+    if wilson % i == 0:
+        time.sleep(1)
+        print str(i) + " is a prime number."
+
+
+
+    
