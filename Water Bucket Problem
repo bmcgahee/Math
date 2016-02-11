@@ -3,7 +3,7 @@
 #Date: 2/11/2016
 #Purpose:  This program allows the user to solve the water problem, where
 #you have two buckets: 7 gallon and 11 gallon, and use the operations of
-#filling, emptying, or pouring from one bucket to another to get one of
+#filling a bucket, emptying a bucket, or pouring from one bucket to another to get one of
 #the buckets to get the target volume of 6 gallons.
 
 
@@ -22,7 +22,7 @@ if x == 0 and y == 0:
     #Fill the x bucket to 7 gallons.
     if bucket == "x":
         x = xMax
-    #Fill th y bucket to 11 gallons.
+    #Fill the y bucket to 11 gallons.
     elif bucket == "y":
         y = yMax
         
