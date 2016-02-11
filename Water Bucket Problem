@@ -1,0 +1,130 @@
+#Author: Ben McGahee
+#Title: Water Bucket Problem
+#Date: 2/11/2016
+#Purpose:  This program allows the user to solve the water problem, where
+#you have two buckets: 7 gallon and 11 gallon, and use the operations of
+#filling, emptying, or pouring from one bucket to another to get one of
+#the buckets to get the target volume of 6 gallons.
+
+
+#Set both the 7 (x bucket) and 11 gallon (y bucket) buckets as empty.
+#Set the x bucket maximum to 7 gallons and the y bucket maximum to 11 gallons.
+#Set the target result to 6 gallons.
+x = 0
+xMax = 7
+y = 0
+yMax = 11
+target = 6
+
+#The case when both x and y buckets are empty.
+if x == 0 and y == 0:
+    bucket = raw_input("Which bucket would you like to fill with water? ")
+    #Fill the x bucket to 7 gallons.
+    if bucket == "x":
+        x = xMax
+    #Fill th y bucket to 11 gallons.
+    elif bucket == "y":
+        y = yMax
+        
+#Print the current volume of the x and y buckets.
+print "x contains: " + str(x) + " gallons."
+print "y contains: " + str(y) + " gallons."
+
+#While loop executes until one of the buckets has 6 gallons.
+while x != target and y != target:
+    #User has a choice of filling, emptying, or pouring water into one of the buckets.
+    action = raw_input("Do you want to fill, empty, or pour water? ")
+
+    #The fill case for when x or y buckets is not full.
+    if action == "fill" and (x != xMax or y != yMax):
+        #Choose x bucket or y bucket to fill.
+        fill = raw_input("Which bucket would you like to fill with water? ")
+        #Fill x bucket. 
+        if fill == "x" and x != xMax:
+            x = xMax
+        #x bucket is already full.
+        elif fill == "x" and x == xMax:
+            print "Bucket x is already full of water."
+        #Fill y bucket.
+        elif fill == "y" and y != yMax:
+            y = yMax
+        #y bucket is already full.
+        elif fill == "y" and y == yMax:
+            print "Bucket y is already full of water."
+    #The empty case when x or y buckets is not empty.
+    elif action == "empty" and (x != 0 or y != 0):
+        #Choose x bucket or y bucket to empty.
+        empty = raw_input("Which bucket would you like to empty water? ")
+        #empty bucket x.
+        if empty == "x" and x != 0:
+            x = 0
+        #bucket x is already empty.
+        elif empty == "x" and x == 0:
+            print "Bucket x is already empty."
+        #empty bucket y.
+        elif empty == "y" and y != 0:
+            y = 0
+        #bucket y is already empty.
+        elif empty == "y" and y == 0:
+            print "Bucket y is already empty."
+    #The pour case for bucket x into bucket y.
+    elif action == "pour":
+        #Choose x bucket or y bucket to pour.
+        pour = raw_input("Which bucket would like to pour water from? ")
+        if pour == "x":
+            #bucket x is already empty and can't be poured into bucket y.
+            if x == 0:
+                print "Bucket x is already empty."
+            #bucket x can't pour into bucket y because bucket y is already full.
+            elif y == yMax:
+                print "Bucket y is already full."
+            #bucket y receives the maximum volume of bucket x after it is poured.
+            elif x == xMax and y == 0:
+                x = 0
+                y = xMax
+            #bucket y receives the given volume of bucket x after it is poured.
+            elif x > 0 and x < xMax and y == 0:
+                y = x
+                x = 0
+            #case when x and y are not empty but not full.
+            elif x > 0 and x <= xMax and y > 0 and y < yMax:
+                x = x - (yMax - y)
+                #resulting volume for bucket y after the pour from bucket x.
+                if x < 0:
+                    x = 0
+                    y = y + xMax
+                else:
+                    y = y + (yMax - y)
+        #The pour case for bucket y into bucket x.  Very similar to pour case for bucket x into bucket y, except variables are switched.
+        if pour == "y":
+            if y == 0:
+                print "Bucket y is already empty."
+            elif x == xMax:
+                print "Bucket x is already full."
+            elif y == yMax and x == 0:
+                y = 0
+                x = yMax
+            elif y > 0 and y < yMax and x == 0:
+                x = y
+                y = 0
+            elif y > 0 and y <= yMax and x > 0 and x < xMax:
+                y = y - (xMax - x)
+                if y < 0:
+                    y = 0
+                    x = x + yMax
+                else:
+                    x = x + (xMax - x)
+    #Let the user know when bucket x contains the target volume of 6 gallons.
+    if x == target:
+        print "Bucket x contains the target amount of water of " + str(target) + " gallons!"
+    #Let the user know when bucket y contains the target volume of 6 gallons.
+    elif y == target:
+        print "Bucket y contains the target amount of water of " + str(target) + " gallons!"
+
+    #Print the final result for both buckets.
+    print "x contains: " + str(x) + " gallons."
+    print "y contains: " + str(y) + " gallons."            
+    
+
+
+
