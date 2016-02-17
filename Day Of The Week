@@ -1,0 +1,92 @@
+#Author: Ben McGahee
+#Title: Day Of The Week
+#Date: 2/16/2016
+#Purpose: This program determines the day of the week for a given date based on the user providing the month, day, and year.
+#Note:  The disparate variation of Gauss' algorithm is applied in this program.
+
+
+#Import the math module.
+import math
+
+#Ask user to input month, day, and year for the date.
+month = raw_input("Enter the month: ")
+day = int(raw_input("Enter the day: "))
+year = int(raw_input("Enter the year: "))
+
+#Use floor function to determine first two digits of the century.
+centuryCode = math.floor(year / 100)
+
+#If year is divisible by 100, the yearCode is 0.  Otherwise, it is the difference between the year and 100 times the centuryCode.
+if year % 100 == 0:
+    yearCode = 0
+else:
+    yearCode = year - centuryCode * 100
+
+#Initialize monthNumber value at 0.
+monthNumber = 0
+
+#Let March = 1, April = 2, May = 3,...,January = 11, February = 12.
+if month == "March":
+    monthNumber = 1
+elif month == "April":
+    monthNumber = 2
+elif month == "May":
+    monthNumber = 3
+elif month == "June":
+    monthNumber = 4
+elif month == "July":
+    monthNumber = 5
+elif month == "August":
+    monthNumber = 6
+elif month == "September":
+    monthNumber = 7
+elif month == "October":
+    monthNumber = 8
+elif month == "November":
+    monthNumber = 9
+elif month == "December":
+    monthNumber = 10
+elif month == "January":
+    monthNumber = 11
+    yearCode = yearCode - 1
+elif month == "February":
+    monthNumber = 12
+    yearCode = yearCode - 1
+
+#Use floor function and monthNumber to get the monthCode.
+monthCode = math.floor(2.6 * monthNumber - 0.2)
+
+#Use the floor function to get the quarterYearCode and quarterCenturyCode values.
+quarterYearCode = math.floor(yearCode / 4)
+quarterCenturyCode = math.floor(centuryCode / 4)
+
+#Double the centuryCode.
+doubleCenturyCode = 2 * centuryCode
+
+#Combine all previous values together to get codeSum.  This value is divided by 7 since there are 7 days in the week.
+codeSum = day + monthCode + yearCode + quarterYearCode + quarterCenturyCode - doubleCenturyCode
+
+#weekValue is the remainder of codeSum mod 7.
+weekValue = codeSum % 7
+
+#Initialize weekDay as an empty string.
+weekDay = ""
+
+#Sunday = 0, Monday = 1, Tuesday = 2,...,Saturday = 6.
+if weekValue == 0:
+    weekDay = "Sunday"
+elif weekValue == 1:
+    weekDay = "Monday"
+elif weekValue == 2:
+    weekDay = "Tuesday"
+elif weekValue == 3:
+    weekDay = "Wednesday"
+elif weekValue == 4:
+    weekDay = "Thursday"
+elif weekValue == 5:
+    weekDay = "Friday"
+elif weekValue == 6:
+    weekDay = "Saturday"
+
+#Prints the day of the week for that given date.  
+print month + " " + str(day) + " " + str(year) + " is on a " + weekDay + "."
