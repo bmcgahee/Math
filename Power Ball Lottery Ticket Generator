@@ -1,0 +1,40 @@
+#Author: Ben McGahee
+#Title:  Power Ball Lottery Ticket Generator
+#Date:   1/6/2016
+#Purpose: This program lets a user (lottery player) generate quick pick lottery ticket(s) for the Power Ball.  
+#This is an alternative to getting a pick quick ticket at your local gas station or grocery store. 
+
+#Import random and time modules.
+import random
+import time
+
+#Declare whiteBalls list of white balls numbered 1-69.
+whiteBalls = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+             34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64,
+             65, 66, 67, 68, 69]
+
+whiteBalls = set(whiteBalls)
+
+#Declare powerBalls list of power balls numbered 1-26.
+powerBalls = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13",
+              "p14", "p15", "p16", "p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p26"]
+
+answer = "yes"
+
+#While loop executes if answer is "yes".
+while answer.lower() == "yes":
+
+    #Program selects 5 random white balls and one power ball.
+    quickPick = random.sample(whiteBalls, 5)
+    quickPick.append(random.choice(powerBalls))
+
+    #Program prints out your quick pick.  
+    print "Here is your quick pick..."
+    time.sleep(3)
+    print quickPick
+
+    #Prompts user to enter "yes" or "no" for another quick pick.
+    answer = raw_input("Do you want another quick pick? ")
+    
+
+    
