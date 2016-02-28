@@ -1,0 +1,81 @@
+#Author: Ben McGahee
+#Title: Triangle Tester
+#Date:  2/28/2016
+#Purpose: This program asks the user to input three sides to determine if the polygon is a triangle.
+#If the polygon is a triangle, then the program determines what type of triangle it is.
+
+#Import time module.
+import time
+
+#Set triangle variable to "yes".
+triangle = "yes"
+
+#While loop executes when the value of triangle is "yes".
+while triangle.lower() == "yes":
+    #Asks users to input length of each side.  If the side length is less than or equal to 0,
+    #then user is taken to the inner while loop and is prompted to enter a length for the side.
+    side1 = float(raw_input("Enter the length of first side: "))
+    while side1 <= 0:
+        side1 = float(raw_input("Enter the length of first side: "))
+        
+    side2 = float(raw_input("Enter the length of second side: "))
+    while side2 <= 0:
+        side2 = float(raw_input("Enter the length of second side: "))
+        
+    side3 = float(raw_input("Enter the length of third side: "))
+    while side3 <= 0:
+        side3 = float(raw_input("Enter the length of third side: "))
+
+    #Sum variables add up the first and second sides, second and third sides, and first and third sides.
+    sum12 = side1 + side2
+    sum23 = side2 + side3
+    sum13 = side1 + side3
+
+    #Sum squared variables add up sum of squares for first and second sides, second and third sides, and first and third sides.
+    sumSquared12 = side1 * side1 + side2 * side2
+    sumSquared23 = side2 * side2 + side3 * side3
+    sumSquared13 = side1 * side1 + side3 * side3
+
+    #Side squared variables square first, second, and third sides.
+    squareSide1 = side1 * side1
+    squareSide2 = side2 * side2
+    squareSide3 = side3 * side3
+
+    #Program determines if the polygon is a triangle and includes a 3 second delay.
+    print "Is the three sided polygon a triangle?  Let's find out..."
+    time.sleep(3)
+    #Case for when the sum of any two sides is greater than the third side.
+    if sum12 > side3 and sum23 > side1 and sum13 > 2:
+        #Program confirms the polygon is a triangle and wants to see what type of triangle it is.
+        #There is a 3 second delay. 
+        print "The three sided polygon is a triangle."
+        print "Let's see what type of triangle it is..."
+        time.sleep(3)
+        #Case for an equilateral triangle where all the sides are equal length.
+        if side1 == side2 and side2 == side3:
+            print "It is an equilateral triangle."
+        #Case for an isosceles triangle where two sides have equal length.
+        elif side1 == side2 or side2 == side3 or side1 == side3:
+            #Isosceles Right triangle case where sum of squares equals the square of the hypotenuse.
+            if sumSquared12 == squareSide3 or sumSquared23 == squareSide1 or sumSquared13 == squareSide2:
+                print "It is an isosceles right triangle."
+            else:
+                print "It is an isosceles triangle."
+        #Case for a scalene triangle where all the sides have different lengths.
+        elif side1 != side2 and side2 != side3:
+            #Scalene right triangle case where sum of squares equals the square of the hypotenuse.
+            if sumSquared12 == squareSide3 or sumSquared23 == squareSide1 or sumSquared13 == squareSide2:
+                print "It is a scalene right triangle."
+            else:
+                print "It is a scalene triangle"   
+    else:
+        #Case where sum of any two sides is not greater than the third side.  Hence, the polygon is not a triangle.
+        print "The three sided polygon is not a triangle."
+
+    #Asks if you want to enter three more side lengths.
+    #If answer is "yes", while loop runs again.  Otherwise, program exits the loop.
+    triangle = raw_input("Do you want to enter three more sides? ")
+
+#Here is the exit message.
+print "Thank you for using Triangle Tester!"
+    
