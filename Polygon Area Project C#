@@ -1,0 +1,87 @@
+//Author: Ben McGahee
+//Title:  Area of Polygon
+//Date:   3/2/2016
+//Purpose:  This ASP.NET web form application lets a user calculate the area of a polygon by 
+//entering in the number of sides and the radius of the polygon.  
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace PolygonArea
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void getAreaButton_Click(object sender, EventArgs e)
+        {
+            //variables get the string values for the sides and radius from their corresponding text boxes.  
+            String sides = sidesTextBox.Text;
+            String radius = radiusTextBox.Text;
+            
+            //Declare two integer variables for number of sides and radius.  
+            int numberOfSides;
+            int radiusValue;
+
+            //Case for when both the sides and radius text boxes are blank.
+            if (sides == "" && radius == "")
+                areaLabel.Text = "Missing values for the number of sides and the radius.";
+            //Case for when the side text box is blank.
+            else if (sides == "")
+                areaLabel.Text = "Missing a value for the number of sides.";
+            //Case for when the radius text box is blank.
+            else if (radius == "")
+                areaLabel.Text = "Missing a value for the radius.";
+            //Case when number of sides is less than or equal to 2.
+            else if (int.TryParse(sides, out numberOfSides) && numberOfSides <= 2)
+                areaLabel.Text = "The number of sides cannot be less than or equal to 2.  Please enter an integer greater than 2 for the number of sides.";
+            //Case when radius is less than or equal to 0.
+            else if (int.TryParse(radius, out radiusValue) && radiusValue <= 0)
+                areaLabel.Text = "Radius cannot be less than or equal to 0.  Please enter a positive integer for the radius.";
+            //Case when there is a valid side entry and invalid radius entry.
+            else if (int.TryParse(sides, out numberOfSides) && !int.TryParse(radius, out radiusValue))
+                areaLabel.Text = "Value of radius is not an integer.  Please enter a positive integer for the radius.";
+            //Case when there is an invalid side entry and an invalid radius entry.
+            else if (!int.TryParse(sides, out numberOfSides) && int.TryParse(radius, out radiusValue))
+                areaLabel.Text = "Value of number of sides is not an integer.  Please enter a positive integer greater than 2 for the number of sides.";
+            //Case when both entries are invalid.
+            else if (!int.TryParse(sides, out numberOfSides) && !int.TryParse(radius, out radiusValue))
+                areaLabel.Text = "Values for number of sides and radius are not integers.  Please enter a positive integer greater than 2 for the number of sides and a positive integer for the radius.";
+            //Case when both entries are valid.
+            else
+            {
+                //Convert the side and radius values to integers.
+                int sidesValue = int.Parse(sides);
+                int polyRadius = int.Parse(radius);
+
+                //Gets the number of degrees inside the polygon using formula 180*(n - 2).
+                //Note that pi radians = 180 degrees.
+                Double totalDegrees = Math.PI * (sidesValue - 2);
+                //Gets the degree measure for each angle inside the polygon.
+                Double angle = totalDegrees / (sidesValue * 2);
+                //Gets the height of the right triangle formed by the radius and the apothem.  
+                Double height = polyRadius * Math.Sin(angle);
+                //Get base of triangle by using Pythagorean Theorem.
+                Double triangleBase = Math.Sqrt(polyRadius * polyRadius - height * height);
+                //Get area of triangle, where area = 1/2BH.
+                Double areaRightTriangle = 0.5 * triangleBase * height;
+                //Doubles the previous value to get area of the obliqueu triangle.
+                Double areaTriangle = areaRightTriangle * 2;
+                //Multiply by the area of the oblique triangle by the number of sides to get area of polygon.
+                Double areaPolygon = areaTriangle * sidesValue;
+                //Round area to two decimal places.
+                Double roundArea = Math.Round(areaPolygon, 2);
+
+                //Label displays the area of the polygon.
+                areaLabel.Text = roundArea.ToString() + " sq. units";
+            }
+        }
+    }
+}
