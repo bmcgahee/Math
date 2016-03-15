@@ -1,0 +1,29 @@
+#Author: Ben McGahee
+#Title:  Bubble Sort Algorithm
+#Date:  3/15/2016
+#Purpose:  This programs lets you choose how many numbers you want to put in a list
+#and then you append all the numbers in the list by using a for loop.
+#The bubble uses a double for loop to look at any two adjacent numbers.
+#If the second number is less than the first number, assign it to a temp variable, and
+#then swap the two numbers.  Bubble sort does this process until all of the numbers
+#have been sorted in numerical order.  
+
+amount = int(raw_input("How many numbers do you want in the list? "))
+numbers = []
+
+for n in range(0, amount):
+    number = int(raw_input("Enter number: "))
+    numbers.append(number)
+    
+for i in range(0, len(numbers) - 1):
+    for j in range(0, len(numbers) - 1 - i):
+        numberPass = j + 1
+        if numbers[j] > numbers[j + 1]:
+            temp = numbers[j + 1]
+            numbers[j + 1] = numbers[j]
+            numbers[j] = temp
+        print numbers
+        
+print "Here is the sorted list of numbers:"
+print numbers
+
