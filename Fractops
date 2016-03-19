@@ -1,0 +1,95 @@
+#Author: Ben McGahee
+#Fractops Module
+#Date: 3/19/2016
+#Purpose:  The Fractops module lets you do operations with fractions such as add, subtract, multiply, and divide,
+#compare two fractions to see which one is greater, lesser, or equal, and converting a repeated decimal to a fraction.
+
+#fractionOps function lets you enter in two fractions, where a and b are the numerators and denominators of the first fraction respectively,
+#c and d are the numerators and denominators of the second fraction respectively, and op is a string that tells which operation you want to use
+#such as "add", "subtract", "multiply", and "divide".
+def fractionOps(a, b, c, d, op):
+    from fractions import Fraction
+
+    if b == 0 or (c == 0 and op == "divide") or d == 0:
+        print "can't divide by 0"
+    else:
+        fractOne = Fraction(a, b)
+        fractTwo = Fraction(c, d)
+
+        fractSum = fractOne + fractTwo
+        fractDiff = fractOne - fractTwo
+        fractMult = fractOne * fractTwo
+        fractDiv = fractOne / fractTwo
+
+        if op == "add":
+            print fractSum
+        elif op == "subtract":
+            print fractDiff
+        elif op == "multiply":
+            print fractMult
+        elif op == "divide":
+            print fractDiv
+        else:
+            print "not a valid operation"
+
+#compareFractions function lets you enter in two fractions num1 / denom1 and num2 / denom2 and compare their values.
+#Function will tell you if one is greater than or less than the other or if they are both equal.
+def compareFractions(num1, denom1, num2, denom2):
+    from fractions import Fraction
+
+    if denom1 == 0 or denom2 == 0:
+        print "can't divide by 0"
+    else:
+        fractOne = Fraction(num1, denom1)
+        fractTwo = Fraction(num2, denom2)
+        
+        if fractOne > fractTwo:
+            print "first fraction is greater than second fraction"
+        elif fractOne < fractTwo:
+            print "first fraction is less than second fraction"
+        else:
+            print "both fractions are equal"
+
+#repeatDecimal function lets you enter in up to 4 digits that repeat in a repeated decimal in the form 0.ddd...
+#and convert it to a fraction.  Some examples of repeated decimals are 0.111..., 0.232323..., 0.568568568...
+def repeatDecimal(dec):
+    from fractions import Fraction
+    
+    
+    if dec >= 1 and dec <= 9:
+        firstTerm = Fraction(dec, 10)
+        ratio = Fraction(1, 10)
+        sumUp = Fraction(firstTerm, 1 - ratio)
+        outputFraction = "0." + str(dec) + str(dec) + "..." + " = " + str(sumUp)
+        print outputFraction
+    elif dec >= 10 and dec <= 99:
+        firstTerm = Fraction(dec, 100)
+        ratio = Fraction(1, 100)
+        sumUp = Fraction(firstTerm, 1 - ratio)
+        outputFraction = "0." + str(dec) + str(dec) + "..." + " = " + str(sumUp)
+        print outputFraction
+    elif dec >= 100 and dec <= 999:
+        firstTerm = Fraction(dec, 1000)
+        ratio = Fraction(1, 1000)
+        sumUp = Fraction(firstTerm, 1 - ratio)
+        outputFraction = "0." + str(dec) + str(dec) + "..." + " = " + str(sumUp)
+        print outputFraction
+    elif dec >= 1000 and dec <= 9999:
+        firstTerm = Fraction(dec, 10000)
+        ratio = Fraction(1, 10000)
+        sumUp = Fraction(firstTerm, 1 - ratio)
+        outputFraction = "0." + str(dec) + str(dec) + "..." + " = " + str(sumUp)
+        print outputFraction
+    else:
+        print "up to 4 digits can be entered"
+
+
+        
+        
+    
+
+    
+    
+
+    
+    
