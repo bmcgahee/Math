@@ -1,0 +1,98 @@
+//Author: Ben McGahee
+//Title: Farmer Calculus
+//Date: 3/23/2016
+//Purpose:  This C++ program lets the user calculate the maximum area and dimensions of a rectangular fencing structure by
+//providing the amount of fencing and the number of partitions that divide this structure.
+
+#include<iostream>
+using namespace std;
+
+//objective() function tells the user what the goal is to be achieved in this program.
+void objective()
+{
+    cout << "You want to create a rectangular fencing structure that will be divided by either 2 or 3 partitions on your family farm.\n";
+    cout << "You want to know what the dimensions will be for this rectangular structure and the maximum area that will be achieved.\n";
+}
+
+//calcMaxArea() function calculates the maximum area by taking in the known values
+//such as total amount of fencing and the number of partitions.
+double calcMaxArea(int totalFencing, int partitions)
+{
+    double maxArea = 0.0;
+    int numberOfPartitions;
+
+    numberOfPartitions = partitions;
+
+    if(numberOfPartitions == 2)
+    {
+        maxArea = totalFencing * totalFencing / 24.0;
+    }
+    else if(numberOfPartitions == 3)
+    {
+        maxArea = totalFencing * totalFencing / 32.0;
+    }
+    return maxArea;
+}
+
+//dimensions() function determines the length and width of the rectangular strucutre by
+//knowing the total amount of fencing and the number of partitions.
+void dimensions(int totalFencing, int partitions)
+{
+    double length;
+    double width;
+    int numberOfPartitions;
+
+    numberOfPartitions = partitions;
+
+    if(numberOfPartitions == 2)
+    {
+        length = totalFencing / 4.0;
+        width = totalFencing / 6.0;
+    }
+    else if(numberOfPartitions == 3)
+    {
+        length = totalFencing / 4.0;
+        width = totalFencing / 8.0;
+    }
+
+    cout << "Here are the dimensions of your rectangular structure:\n";
+    cout << "The length of the field is: " << length << " feet.\n";
+    cout << "The width of the field is: " << width << " feet.\n";
+}
+
+//This is the main program.
+int main()
+{
+  objective();
+
+  int fencing;
+  int partitions;
+  double maximumArea;
+
+  cout << "Enter the amount of fencing in feet: ";
+  cin >> fencing;
+
+  //Keep asking the user the amount of fencing until a positive value is entered.
+  while(fencing <= 0)
+  {
+     cout << "Enter the amount of fencing in feet: ";
+     cin >> fencing;
+  }
+
+  cout << "Do you need 2 or 3 partitions? ";
+  cin >> partitions;
+
+  //Keep asking the user the number of partitions until the value of either 2 or 3 has been entered.
+  while(partitions != 2 && partitions != 3)
+  {
+      cout << "Do you need 2 or 3 partitions? ";
+      cin >> partitions;
+  }
+
+  maximumArea = calcMaxArea(fencing, partitions);
+  dimensions(fencing, partitions);
+
+  cout << "The maximum area of your field is: " << maximumArea << " square feet.";
+
+  return 0;
+}
