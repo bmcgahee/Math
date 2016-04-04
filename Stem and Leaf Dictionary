@@ -1,0 +1,68 @@
+#Author: Ben McGahee
+#Title: Stem and Leaf Dictionary
+#Date: 4/4/2016
+#Purpose: The stemLeaf function takes in a list of one and two digit numbers and
+#outputs a dictionary that describes a stem and leaf plot in statistics.
+#The stem is the first digit in the two digit number. If the stem is a single digit, then it is 0.
+#The leaf is the last digit in the two digit number.  If the stem is a single digit, the leaf is that number.
+
+def stemLeaf(numberList):
+    stemLeafDict = {}
+    numberList = sorted(numberList)
+    length = len(numberList)
+    leafZero = [] #list to store all the leaves when stem is 0
+    leafOne = []  #list to store all the leaves when stem is 1
+    leafTwo = []  #list to store all the leaves when stem is 2
+    leafThree = []#list to store all the leaves when stem is 3
+    leafFour = [] #list to store all the leaves when stem is 4
+    leafFive = [] #list to store all the leaves when stem is 5
+    leafSix = []  #list to store all the leaves when stem is 6
+    leafSeven = []#list to store all the leaves when stem is 7
+    leafEight = []#list to store all the leaves when stem is 8
+    leafNine = [] #list to store all the leaves when stem is 9
+    for i in range(0, length):
+        stemNumber = numberList[i] / 10 #get the stem number for that number in the numberList
+        leafNumber = numberList[i] % 10 #get the leaf number for that number in the numberList
+        if stemNumber == 0:
+            leafZero.append(leafNumber)
+            stemLeafDict[stemNumber] = leafZero
+        elif stemNumber == 1:
+            leafOne.append(leafNumber)
+            stemLeafDict[stemNumber] = leafOne
+        elif stemNumber == 2:
+            leafTwo.append(leafNumber)
+            stemLeafDict[stemNumber] = leafTwo
+        elif stemNumber == 3:
+            leafThree.append(leafNumber)
+            stemLeafDict[stemNumber] = leafThree
+        elif stemNumber == 4:
+            leafFour.append(leafNumber)
+            stemLeafDict[stemNumber] = leafFour
+        elif stemNumber == 5:
+            leafFive.append(leafNumber)
+            stemLeafDict[stemNumber] = leafFive
+        elif stemNumber == 6:
+            leafSix.append(leafNumber)
+            stemLeafDict[stemNumber] = leafSix
+        elif stemNumber == 7:
+            leafSeven.append(leafNumber)
+            stemLeafDict[stemNumber] = leafSeven
+        elif stemNumber == 8:
+            leafEight.append(leafNumber)
+            stemLeafDict[stemNumber] = leafEight
+        elif stemNumber == 9:
+            leafNine.append(leafNumber)
+            stemLeafDict[stemNumber] = leafNine
+    print "Here is the sorted list of numbers:"
+    print numberList
+    print "Here are the Stem and Leaf Pairings:"
+    print stemLeafDict
+
+#Test 1: sorted list
+stemLeaf([1, 6, 10, 15, 19, 22, 27, 32, 38])
+
+#Test 2:  unsorted list
+stemLeaf([9, 85, 74, 62, 91, 45, 33, 30, 28, 26, 55, 64, 70, 10, 15, 18, 22, 25, 89])
+
+#Test 3: empty list
+stemLeaf([])
