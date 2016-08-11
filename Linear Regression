@@ -1,0 +1,85 @@
+#Author: Ben McGahee
+#Title:  Linear Regression
+#Date: 8/11/2016
+#Purpose:  This program asks the user how many points they want to enter and then calculates the line of best fit in slope-intercept form y = mx + b.
+
+points = int(raw_input("How many points do you want to enter? "))
+count = 0
+xData = []
+yData = []
+
+while count < points:
+    x = int(raw_input("Enter x value: "))
+    y = int(raw_input("Enter y value: "))
+    xData.append(x)
+    yData.append(y)
+    count += 1
+
+xSize = len(xData)
+ySize = len(yData)
+
+#Find the average of the x and y coordinates in the data set.
+xAverage = sum(xData) / xSize
+yAverage = sum(yData) / ySize
+
+#This list stores the difference between each x value and the average x value.
+xDev = []
+
+#This list stoers the difference between each y value and the average y value.
+yDev = []
+
+for i in range(0, xSize):
+    xDiff = xData[i] - xAverage
+    yDiff = yData[i] - yAverage
+    xDev.append(xDiff)
+    yDev.append(yDiff)
+
+#This list stores the individual products of the respective elements of the xDev and yDev lists.
+prodXY = []
+
+for j in range(0, len(yDev)):
+    prod = xDev[j] * yDev[j]
+    prodXY.append(prod)
+
+#This list stores the squares of all the elements in the xDev list.
+devXSquared = []
+
+for k in range(0, len(xDev)):
+    xDiffSquared = xDev[k] * xDev[k]
+    devXSquared.append(xDiffSquared)
+
+#This is the numerator of the slope value.
+sumProdXY = 0.0
+
+#This is the denominator of the slope value.
+sumXDiffSquared = 0.0
+
+for t in range(0, len(prodXY)):
+    sumProdXY += prodXY[t]
+    sumXDiffSquared += devXSquared[t]
+
+slope = sumProdXY / sumXDiffSquared
+yIntercept = yAverage - slope * xAverage
+line = "y = " + str(slope) + "x + " + str(yIntercept)
+
+#This list stores the y values for the line.
+yLinReg = []
+
+for y in range(0, len(yData)):
+    yNew = slope * xData[y] + yIntercept
+    yLinReg.append(yNew)
+
+#This list stores the square of the distances between the y values in the data set and the actual y values on the line.
+yDistanceSquared = []
+
+for z in range(0, len(yLinReg)):
+    yDistance = yData[z] - yLinReg[z]
+    yDiffSquared = yDistance * yDistance
+    yDistanceSquared.append(yDiffSquared)
+
+squaredSum = sum(yDistanceSquared)
+
+print "The line of best fit is: " + line
+print "The sum of the squared distances is: " + str(squaredSum)
+
+    
